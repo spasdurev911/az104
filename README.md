@@ -7,9 +7,6 @@ Hands-on lab projects completed as part of the AZ-104 Azure Administrator certif
 |------|--------|
 | AZ-900 | ✅ Passed |
 | AZ-104 | 🔄 In Progress |
-| SC-900 | ⏳ Upcoming |
-| SC-300 | ⏳ Upcoming |
-| AZ-500 | 🎯 Target |
 
 ## Projects
 | # | Project | Topics | Status |
@@ -23,12 +20,4 @@ Hands-on lab projects completed as part of the AZ-104 Azure Administrator certif
 ## Tools & Environment
 - Azure Portal
 - Azure CLI
-- Ubuntu (targetjuice)
 - Git / GitHub
-
-## Background
-- MSc Cybersecurity
-- BSc Computer Forensics
-- CompTIA Security+
-- Qualys Vulnerability Management
-- AZ-900 ✅
