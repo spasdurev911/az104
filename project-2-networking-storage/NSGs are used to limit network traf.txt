@@ -1,0 +1,35 @@
+NSGs are used to limit network traffic to resources in your virtual network by containing a list of security rules. You can associate NSGs with subnets or network interfaces and define rules to control inbound and outbound traffic.
+
+
+Network security groups are essential for controlling network traffic in Azure virtual networks.
+
+NSG rules are evaluated and processed based on priority and can be created for subnets and network interfaces.
+
+Effective NSG rules can be achieved by considering rule precedence, intra-subnet traffic, and managing rule priority.
+
+Application security groups provide an application-centric view of infrastructure and simplify rule management.
+
+Basically:
+NSG -  A firewall ruleset attached to a subnet or NIC. Rules allow or deny traffic based on source/destination IP, port, protocol, and direction. Every rule has a priority (100–4096) — lower number wins. Azure includes default rules you cannot delete but can override.
+
+Use an NSG when:
+
+Blocking RDP (port 3389) to a subnet except from a specific admin IP
+Allowing HTTP/HTTPS (80/443) from the internet to a frontend subnet only
+Isolating a database subnet from direct internet access
+The environment is small and stable with IPs that don't change often
+
+Application Security Groups (ASG)
+A logical label assigned to a NIC. Has no rules of its own — referenced inside NSG rules instead of IP addresses, so rules describe roles rather than specific machines.
+Use an ASG when:
+
+VMs get redeployed frequently and IPs change
+You want to group VMs by function (web, app, database tiers)
+Scaling out and don't want to update firewall rules for every new VM
+You want self-documenting rules — ASG:WebTier is clearer than a list of IPs
+
+Lab — Connect ASG to NSG
+
+Create a Network Security Group and associate it with a VNet/subnet
+Create an Application Security Group and assign it to the NICs of the relevant VMs
+Add an inbound security rule to the NSG, setting the ASG as the source — this allows traffic from all VMs in that ASG automatically
