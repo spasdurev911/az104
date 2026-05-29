@@ -1,0 +1,32 @@
+Created and configured virtual networks:
+
+I've created 2 VNs app-vnet and hub-vnet, where the app-vnet would host an app and within I've created 2 subnets, 1 for the frontend web servers and another for the backend or the database servers.
+The hub-vnet is a subnet for the firewall.
+
+I've created VN peering in order for the two VNs to communicate with each other.
+
+What I've learned:
+
+Azure VNets are isolated private networks in the cloud
+A virtual network (VNet) gives your Azure resources a secure, private networking environment, similar to an on-premises network.
+
+You can create multiple VNets
+Azure allows multiple VNets within the same region and subscription, which helps separate environments like production, development, and testing.
+
+Careful IP address planning is important
+When creating a VNet, its CIDR/IP range must not overlap with your company’s existing networks or other VNets.
+This prevents routing and connectivity problems later, especially when connecting on-premises networks or peered VNets.
+
+Subnets divide a VNet into smaller sections
+Subnets let you organize and isolate resources within a VNet for:
+security
+workload separation
+traffic management
+
+Each subnet needs a unique IP range
+No two subnets in the same VNet can share overlapping address ranges.
+Some Azure services require dedicated subnets
+Services like Azure Firewall must be deployed into their own special subnet.
+
+VNet peering connects VNets together
+Virtual network peering allows two VNets to communicate privately and efficiently, making them behave almost like a single network without needing a VPN gateway.
