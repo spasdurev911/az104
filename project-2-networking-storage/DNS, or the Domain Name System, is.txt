@@ -1,0 +1,78 @@
+DNS, or the Domain Name System, is a protocol within the TCP/IP standard. DNS serves an essential role of translating the human-readable domain names—for example: wwwwww.env11.dns-cloud.net—into an IP address (10.10.10.10 in my tests). IP addresses enable computers and network devices to identify and route requests among themselves
+
+
+In order for a computer, server, or other network-enabled device to access web-based resources, it must reference a DNS server.
+
+When you connect by using your on-premises network, the DNS settings come from your server. When you connect by using an external location like a hotel, the DNS settings come from the internet service provider (ISP).
+
+A DNS server carries out one of two primary functions:
+
+Maintains a local cache of recently accessed or used domain names and their IP addresses. This cache provides a faster response to a local domain lookup request. If the DNS server can't find the requested domain, it passes the request to another DNS server. This process repeats at each DNS server until either a match is made or the search times out.
+Maintains the key-value pair database of IP addresses and any host or subdomain over which the DNS server has authority. This function is often associated with mail, web, and other internet domain services.
+
+IPv4 is composed of four sets of numbers, in the range 0 to 255, each separated by a dot; for example: 127.0.0.1. Today, IPv4 is the most commonly used standard. Yet, with the increase in IoT devices, the IPv4 standard will eventually be unable to keep up.
+
+IPv6 is a relatively new standard and is intended to eventually replace IPv4. It consists of eight groups of hexadecimal numbers, each separated by a colon; for example: fe80:11a1:ac15:e9gf:e884:edb0:ddee:fea3.
+
+Many network devices are now provisioned with both an IPv4 and an IPv6 address. The DNS name server can resolve domain names to both IPv4 and IPv6 addresses.
+
+
+Configuration information for your DNS server is stored as a file within a zone on your DNS server. Each file is called a record. The following record types are the most commonly created and used:
+
+A is the host record, and is the most common type of DNS record. It maps the domain or host name to the IP address.
+CNAME is a Canonical Name record that's used to create an alias from one domain name to another domain name. If you had different domain names that all accessed the same website, you'd use CNAME.
+MX is the mail exchange record. It maps mail requests to your mail server, whether hosted on-premises or in the cloud.
+TXT is the text record. It's used to associate text strings with a domain name. Azure and Microsoft 365 use TXT records to verify domain ownership.
+Additionally, there are the following record types:
+
+Wildcards
+CAA (certificate authority)
+NS (name server)
+SOA (start of authority)
+SPF (sender policy framework)
+SRV (server locations)
+
+Azure DNS allows you to host and manage your domains by using a globally distributed name-server infrastructure. It allows you to manage all of your domains by using your existing Azure credentials.
+
+Azure DNS acts as the SOA for the domain.
+
+You can't use Azure DNS to register a domain name; you need to register it by using a third-party domain registrar.
+
+In this unit, you learn how to:
+
+Set up an Azure DNS and create a public DNS zone.
+Create an A record.
+Verify that the A record resolves to an IP address.
+
+By default, the NS and SOA record sets are automatically created whenever a DNS zone is created, and automatically deleted whenever a DNS zone deleted. The NS record set defines the Azure DNS namespaces and contains the four Azure DNS records. You use all four records when you update the registrar.
+
+The SOA record represents your domain, and is used when other DNS servers are searching for your domain.
+
+ns1-09.azure-dns.com.
+ns2-09.azure-dns.net.
+ns3-09.azure-dns.org.
+ns4-09.azure-dns.info.\
+
+
+Email: azuredns-hostmaster.microsoft.com
+Host: ns1-09.azure-dns.com.
+Refresh: 3600
+Retry: 300
+Expire: 2419200
+Minimum TTL: 300
+Serial number: 1
+
+
+successfully set up a DNS zone and created an A record.
+
+You give it a name (www.env11.dns-cloud.net) and it gives back an IP address (10.10.10.10). That's called a DNS resolution or name resolution.
+
+witn nslookup, I basically did : "hey, ask ns1-09.azure-dns.com specifically to resolve this name for me." So the output is structured as:
+Server:   ns1-09.azure-dns.com   ← the DNS server you queried
+Address:  13.107.236.9#53        ← that DNS server's own IP address (#53 is the DNS port)
+
+Name:     www.env11.dns-cloud.net  ← the hostname you asked about
+Address:  10.10.10.10              ← the answer: what that hostname resolves to
+
+
+13.68.158.235
