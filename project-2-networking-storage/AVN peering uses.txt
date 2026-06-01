@@ -1,0 +1,26 @@
+AVN peering uses:
+
+Regional virtual network peering connects Azure virtual networks that exist in the same region.
+
+Global virtual network peering connects Azure virtual networks that exist in different regions.
+
+After you create a peering between virtual networks, the individual virtual networks are still managed as separate resources.
+
+
+Implement Intersite Connectivity (explore communication between virtual networks)
+
+Create a core services virtual machine and virtual network
+
+Create a virtual machine in a different virtual network
+
+used network watcher for these 2 VMs/VNs, unable to connect due to lack of VNet peering > peering has been configured
+
+Azure Virtual Network peering allows for the connection of virtual networks in a hub and spoke topology.
+
+There are two types of peering: regional and global. Regional peering connects virtual networks in the same region. Global peering connects virtual networks in different regions.
+
+Network traffic between peered virtual networks is private and kept on the Azure backbone network.
+
+You can configure Azure VPN Gateway in the peered virtual network as a transit point to access resources in another network.
+
+Network security groups can be applied to block or allow access between virtual networks when configuring virtual network peering.
