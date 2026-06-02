@@ -1,0 +1,5 @@
+watch -d -n 5 "az vm list \
+    --resource-group "demo" \
+    --show-details \
+    --query '[*].{Name:name, ProvisioningState:provisioningState, PowerState:powerState}' \
+    --output table"
